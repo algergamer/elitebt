@@ -2,9 +2,9 @@
   "name": "Elite Bot",
   "version": "2.1.0",
   "description": "Elite ! ",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node bot.js"
   },
   "dependencies": {
     "canvas": "^1.6.10",
