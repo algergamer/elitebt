@@ -1,14 +1,18 @@
 const Discord = require('discord.js')
-const client = new Discord.Client({
-  disableEveryone: true,
-  messageCacheMaxSize: 500,
-  messageCacheLifetime: 120,
-  messageSweepInterval: 60
-});
+const client = new Discord.Client();
+const fs = require('fs');
+const jimp = require('jimp')
+const canvas = require('canvas')
 const prefix = "e-";
 const adminprefix = "e--";
 const devs = ['343383616895713290']
-client.login(process.env.SECRET_YEET);
+client.login('NDc2MDI1NDEzOTg3MDc0MDQ5.Dkn8NA.9iCa8ty2b5p1koiDVGWPi79Yjg');
+
+
+
+
+
+
 
 
 client.on('message', message => {
@@ -31,113 +35,62 @@ client.on('message', message => {
 
 
 
-
-
-
-  var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
+client.on('message', message => {
+if(message.content === 'Hey') {
+message.reply('i am a live')
 }
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("476022605803946004");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        });
-    });
+
 });
 
 
 
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("476022605803946004");
-    if (!channel) {
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("475821467393589248");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
- channel.send(`Invited By  ${Invite.inviter} `) ;         
- }
-            dat[Inv] = Invite.uses;
-       
-       });
-    });
-});
-
-
-
-
-
-
-
-
-client.on('guildMemberAdd', member => {
-  let memberavatar = member.user.avatarURL
-    let welcomer = member.guild.channels.get('476022605803946004');
-      if (!welcomer) return;     
-      welcomer.send(`Welcome To **Elite Store**, ${member.user}! You are The **${member.guild.memberCount}** user!`);
-      var Canvas = require('canvas')
-     var jimp = require('jimp')
-     const w = ['./img/w1.jpg'];
-      let Image = Canvas.Image,
-          canvas = new Canvas(401, 202),
-          ctx = canvas.getContext('2d');
-      ctx.patternQuality = 'bilinear';
-      ctx.filter = 'bilinear';
-      ctx.antialias = 'subpixel';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-      ctx.shadowOffsetY = 2;
-      ctx.shadowBlur = 2;
-      fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-          if (err) return console.log(err);
-          let BG = Canvas.Image;
-          let ground = new Image;
-          ground.src = Background;
-          ctx.drawImage(ground, 0, 0, 401, 202);
+ client.on('guildMemberAdd', member => {
+    let memberavatar = member.user.avatarURL
+      let welcomer = member.guild.channels.find('name', "chat");
+        if (!welcomer) return;     
+        welcomer.send(`Welcome To **Elite Store**, ${member.user}! You are The **${member.guild.memberCount}** user!`);
+        var Canvas = require('canvas')
+       var jimp = require('jimp')
+       const w = ['./assets/w1.jpg'];
+        let Image = Canvas.Image,
+            canvas = new Canvas(2000, 600),
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 401, 202);
 
 })
 
-              let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
-              jimp.read(url, (err, ava) => {
-                  if (err) return console.log(err);
-                  ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                      if (err) return console.log(err);
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(30, -50) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
 
-                      //Avatar
-                      let Avatar = Canvas.Image;
-                      let ava = new Avatar;
-                      ava.src = buf;
-                      ctx.drawImage(ava, 152, 27, 95, 95);
-                      
-                                              //wl
-                      ctx.font = '20px Arial Bold';
-                      ctx.fontSize = '25px';
-                      ctx.fillStyle = "#FFFFFF";
-                      ctx.textAlign = "center";
-                      ctx.fillText("Welcome To FlightBot Server", 210, 154);
-                      
-                      //ur name
-                      ctx.font = '20px Arial';
-                      ctx.fontSize = '28px';
-                      ctx.fillStyle = "#FFFFFF";
-                      ctx.textAlign = "center";
-                      ctx.fillText(member.user.username, 213, 190);
-                      
+                        //Avatar
+                        let Avatar = Canvas.Image;
+                       let ava = new Avatar;
+                       ava.src = buf;
+                       ctx.drawImage(ava, 1000, 300, 350, 350);
+                        
+                    
+                        //ur name
+                        ctx.font = '20px Arial';
+                        ctx.fontSize = '28px';
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 213, 190);
+                        
 welcomer.sendFile(canvas.toBuffer())
 })
 })
-    });
+      });
