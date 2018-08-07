@@ -6,7 +6,7 @@ const canvas = require('canvas')
 const prefix = "e-";
 const adminprefix = "e--";
 const devs = ['343383616895713290']
-client.login('NDc2MDI1NDEzOTg3MDc0MDQ5.Dkn8NA.9iCa8ty2b5p1koiDVGWPi79Yjg');
+client.login(process.env.SECRET_YEET);
 
 
 
