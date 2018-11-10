@@ -6,6 +6,7 @@ const canvas = require('canvas')
 const prefix = "e-";
 const adminprefix = "e--";
 const devs = ['343383616895713290']
+client.login(process.env.BOT_TOKEN);
 
 
 
