@@ -6,7 +6,6 @@ const canvas = require('canvas')
 const prefix = "e-";
 const adminprefix = "e--";
 const devs = ['343383616895713290']
-client.login(process.env.SECRET_YEET);
 
 
 
@@ -46,7 +45,7 @@ message.reply('i am a live')
 
  client.on('guildMemberAdd', member => {
     let memberavatar = member.user.avatarURL
-      let welcomer = member.guild.channels.find('name', "chat");
+      let welcomer = member.guild.channels.find('name', "welcome");
         if (!welcomer) return;     
         welcomer.send(`Welcome To **Elite Store**, ${member.user}! You are The **${member.guild.memberCount}** user!`);
         var Canvas = require('canvas')
